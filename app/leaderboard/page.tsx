@@ -29,7 +29,6 @@ import {
   TableHeader,
   TableHead,
   TableRow,
-  TableBody,
   TableCell,
 } from '@/components/ui/table';
 import {

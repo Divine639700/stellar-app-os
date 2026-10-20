@@ -2,7 +2,7 @@
 
 import { useState, useEffect, type JSX } from 'react';
 import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/atoms/Card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/molecules/Card';
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { Badge } from '@/components/atoms/Badge';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect, type JSX } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/atoms/Card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/molecules/Card';
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { Badge } from '@/components/atoms/Badge';

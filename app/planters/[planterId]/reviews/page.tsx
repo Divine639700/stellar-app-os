@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { Review, ReviewFormValues } from '@/lib/review-types';
-import { ReviewList } from '@/components/reviews/ReviewList';
-import { ReviewForm } from '@/components/reviews/ReviewForm';
+import { ReviewList } from '@/app/components/reviews/ReviewList';
+import { ReviewForm } from '@/app/components/reviews/ReviewForm';
 
 export default function PlanterReviewsPage() {
   const params = useParams();
