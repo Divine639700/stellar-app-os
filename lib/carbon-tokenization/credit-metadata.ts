@@ -1,14 +1,9 @@
-import type {
-  MintedCreditRecord,
-  RegistryProtocol,
-  RegistryProjectData,
-  RegistryRetirementData,
-} from '../certification/types';
+import type { RegistryProtocol, RegistryProjectData, RegistryRetirementData } from '../certification/types';
 import { makeTokenId } from './registry-client';
 import { uploadToIpfs } from '../ipfs/upload';
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
+import 'node:os';
 import logger from '../logger';
 
 export interface CreditMetadata {

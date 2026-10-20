@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { checkRateLimit, checkSubmitAnonRateLimit, blockIp } from '../rateLimit';
-import { redis } from '../redis';
+import '../redis';
 
 // Mock the Redis module so it returns a mocked client if needed, or null to test fallback.
 // Since rateLimit imports redis, we can mock it here if we want to test both paths.

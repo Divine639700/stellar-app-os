@@ -14,10 +14,7 @@ import Link from 'next/link';
 import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
 import type { CarbonProject, ProjectType } from '@/lib/types/carbon';
-import {
-  getProjectClimateComparison,
-  METEOROLOGICAL_API_SOURCE,
-} from '@/lib/climate/climateComparisonService';
+import { getProjectClimateComparison } from '@/lib/climate/climateComparisonService';
 import type {
   ClimateLayerMetric,
   ClimateLayerTimeframe,

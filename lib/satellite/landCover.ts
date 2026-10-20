@@ -19,7 +19,7 @@
  *   Copernicus CGLS NDVI thresholds (CLMS bulletin).
  */
 
-import { computeEvi, computeNdvi, computeSavi } from './ndvi';
+import { computeEvi, computeNdvi } from './ndvi';
 import type {
   LandCoverChange,
   LandCoverClass,

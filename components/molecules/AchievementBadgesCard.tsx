@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { AchievementBadgeProgress, SponsorshipMilestones } from '@/lib/types/sponsor-badge';
+import type { SponsorshipMilestones } from '@/lib/types/sponsor-badge';
 import { getAchievementBadgeProgress } from '@/lib/gamification/achievement-badges';
 
 interface AchievementBadgesCardProps {

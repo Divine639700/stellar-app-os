@@ -1,11 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import {
-  MOCK_TREE_NFT_LISTINGS,
-  calculateRoyaltyBreakdown,
-  getTreeNFTListings,
-} from '@/lib/nft/nft-marketplace';
+import { calculateRoyaltyBreakdown, getTreeNFTListings } from '@/lib/nft/nft-marketplace';
 import type { TreeNFTListing, NFTRarity, RoyaltyBreakdown } from '@/lib/types/nft-marketplace';
 
 export function NFTMarketplace() {

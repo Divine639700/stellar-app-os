@@ -26,12 +26,7 @@ import {
   parseBuyerAnalyticsQuery,
   type BuyerAnalyticsRequest,
 } from '@/lib/api/buyer-analytics';
-import {
-  buildBuyerComplianceReport,
-  buildPeriodLabel,
-  type ReportPeriodType,
-  type BuyerComplianceReportResponse,
-} from '@/lib/esg-reporting-v2';
+import { buildBuyerComplianceReport, type ReportPeriodType, type BuyerComplianceReportResponse } from '@/lib/esg-reporting-v2';
 import {
   generateBuyerComplianceReportPdf,
   getPdfFilename,

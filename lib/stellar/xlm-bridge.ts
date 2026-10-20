@@ -12,18 +12,7 @@
  * with the platform fee-payer keypair (STELLAR_FEE_PAYER_SECRET).
  */
 
-import {
-  Address,
-  Contract,
-  Keypair,
-  Networks,
-  Operation,
-  SorobanRpc,
-  TransactionBuilder,
-  nativeToScVal,
-  scValToNative,
-  xdr,
-} from '@stellar/stellar-sdk';
+import { Address, Contract, Keypair, Networks, SorobanRpc, TransactionBuilder, nativeToScVal, scValToNative, xdr } from '@stellar/stellar-sdk';
 import { signTransactionWithFreighter, signTransactionWithAlbedo } from './signing';
 import type { NetworkType } from '@/lib/types/wallet';
 

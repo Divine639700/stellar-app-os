@@ -9,15 +9,12 @@ import {
   getFarmerPaymentMethods,
   parseFarmerPaymentMethodFilters,
 } from '@/lib/payments/farmer-payment-methods';
-import {
-  getProjectComparison,
-  parseProjectComparisonInput,
-} from '@/lib/analytics/project-comparison';
+import '@/lib/analytics/project-comparison';
 import {
   getFarmerIncomePrediction,
   parseFarmerIncomePredictionInput,
 } from '@/lib/analytics/farmer-income';
-import { getComplianceReport, parseComplianceReportInput } from '@/lib/analytics/compliance-report';
+import '@/lib/analytics/compliance-report';
 import { searchOffsetProjects, parseOffsetProjectSearchParams } from '@/lib/offset/project-search';
 
 export const runtime = 'nodejs';

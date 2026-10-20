@@ -3,17 +3,11 @@ import {
   storeCreditMetadata,
   type MetadataUploadResult,
 } from './credit-metadata';
-import type {
-  MintedCreditRecord,
-  RegistryClient,
-  RegistryProtocol,
-  TokenizationRequest,
-  TokenizationValidationResult,
-} from '../certification/types';
+import type { MintedCreditRecord, TokenizationRequest, TokenizationValidationResult } from '../certification/types';
 import { type CreditValidator } from './credit-validator';
 import type { MintedCreditRepository } from './minted-repository';
 import type { BlockchainMintClient, MintResult } from './evm-client';
-import { CreditTokenizationError, ValidationInternalError } from './errors';
+import { ValidationInternalError } from './errors';
 import logger from '../logger';
 
 export interface TokenizeCreditResult {

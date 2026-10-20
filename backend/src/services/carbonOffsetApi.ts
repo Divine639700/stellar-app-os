@@ -8,7 +8,7 @@
  * purchasing directly on their e-commerce or website. White-label solution.
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
 import { generateApiKey, hashApiKey } from './carbonOffsetSecurity';

@@ -31,7 +31,7 @@ import {
   type ProjectRiskInput,
   type RiskRating,
 } from '@/backend/src/services/projectRiskScoring';
-import { listProjectRiskScores } from '@/lib/services/project-risk-score.service';
+import '@/lib/services/project-risk-score.service';
 import { apiVersionHeaders } from '@/lib/api/versioning';
 
 export const runtime = 'nodejs';

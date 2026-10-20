@@ -1,5 +1,5 @@
 import type { MintedCreditRecord, RegistryProtocol } from '../certification/types';
-import type { CreditMetadata } from './credit-metadata';
+
 import { makeMintedCreditRecord, makeTokenId } from './registry-client';
 import logger from '../logger';
 

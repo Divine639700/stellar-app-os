@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Award, Calendar, PartyPopper, Share2, Sparkles } from 'lucide-react';
+import { Award, Calendar, PartyPopper, Sparkles } from 'lucide-react';
 import type { SponsorMilestone } from '@/lib/gamification/sponsor-milestones';
 import { CelebrationModal } from '@/components/molecules/CelebrationModal';
 

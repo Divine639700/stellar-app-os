@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi, beforeEach, type Mock } from 'vitest';
 import { TreeClusterMap } from './TreeClusterMap';
 import { fetchPublicTrees } from '@/lib/api/trees';
-import type { TreesResponse, TreeFilterState } from '@/lib/types/tree';
+import type { TreesResponse } from '@/lib/types/tree';
 import userEvent from '@testing-library/user-event';
 
 // Mock the API

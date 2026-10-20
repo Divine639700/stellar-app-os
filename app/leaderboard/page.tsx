@@ -3,26 +3,14 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import {
-  type LeaderboardSponsor,
-  type LeaderboardPlanter,
-  type LeaderboardPeriod,
-  type LeaderboardCategory,
-  type BonusReward,
-} from '@/lib/types/leaderboard';
+import { type LeaderboardSponsor, type LeaderboardPlanter, type LeaderboardPeriod, type LeaderboardCategory } from '@/lib/types/leaderboard';
 import {
   fetchLeaderboard as fetchSponsorLeaderboard,
   fetchPlanterLeaderboard,
 } from '@/lib/api/mock/leaderboard';
 import { Button } from '@/components/atoms/Button';
 import { Text } from '@/components/atoms/Text';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/molecules/Card';
+import { Card, CardContent } from '@/components/molecules/Card';
 import {
   Table,
   TableBody,
@@ -31,23 +19,7 @@ import {
   TableRow,
   TableCell,
 } from '@/components/ui/table';
-import {
-  TreePine,
-  TrendingUp,
-  Trophy,
-  Medal,
-  Loader2,
-  ArrowUp,
-  ArrowDown,
-  Minus,
-  Crown,
-  Sparkles,
-  Gift,
-  Leaf,
-  ChevronUp,
-  ChevronDown,
-  Wallet,
-} from 'lucide-react';
+import { TreePine, Trophy, Loader2, Minus, Sparkles, Gift, Leaf, ChevronUp, ChevronDown, Wallet } from 'lucide-react';
 import Link from 'next/link';
 
 // --- MOCK WALLET CONTEXT ---

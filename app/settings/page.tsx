@@ -14,7 +14,7 @@ import {
   CardTitle,
 } from '@/components/molecules/Card';
 import { hasCompletedOnboardingTour, requestOnboardingTourRestart } from '@/lib/onboardingTour';
-import { cn } from '@/lib/utils';
+import '@/lib/utils';
 import { PreferencesSection } from '@/components/organisms/settings/PreferencesSection';
 
 type TabId = 'profile' | 'notifications' | 'preferences' | 'danger';

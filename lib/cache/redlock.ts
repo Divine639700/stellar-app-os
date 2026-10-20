@@ -23,7 +23,7 @@
 import { randomUUID } from 'crypto';
 import type { RedisClientType } from 'redis';
 import logger from '@/lib/logger';
-import { getRedisClients, hasRedisConfigured } from './redis';
+import { hasRedisConfigured } from './redis';
 
 // ── Config helpers ───────────────────────────────────────────────────────────
 

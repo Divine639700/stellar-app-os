@@ -154,7 +154,6 @@ async function enforceApiKeyLimit(apiKey: string, txId: string): Promise<NextRes
     console.error('[proxy] tiered rate limit failed open', { error });
     return null;
   }
-
 }
 
 export const config = {
