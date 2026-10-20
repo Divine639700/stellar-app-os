@@ -53,18 +53,18 @@ export class VolumeDiscountError extends Error {
 const MINIMUM_BULK_TONS = 100;
 
 function assertPositiveNumber(value: number, name: string): void {
-  if (!number.isFinite(value) || value <= 0) {
+  if (!Number.isFinite(value) || value <= 0) {
     throw new VolumeDiscountError(`${name} must be a positive finite number`);
   }
 }
 
 function assertDiscountRate(rate: number): void {
-  if (!number.isFinite(rate) || rate < 0 || rate >= 1) {
+  if (!Number.isFinite(rate) || rate < 0 || rate >= 1) {
     throw new VolumeDiscountError("discountRate must be in the range [0, 1)");
   }
 }
 
-function validateTies(tiers: VolumeTier[]): void {
+function validateTiers(tiers: VolumeTier[]): void {
   if (!Array.isArray(tiers) || tiers.length === 0) {
     throw new VolumeDiscountError("agreement must define at least one volume tier");
   }
@@ -119,7 +119,7 @@ export function validateBulkPurchaseAgreement(agreement: BulkPurchaseAgreement):
 
   if (agreement.maximumTons !== null) {
     assertPositiveNumber(agreement.maximumTons, "agreement.maximumTons");
-    if (agreeement.maximumTons < agreement.minimumTons) {
+    if (agreement.maximumTons < agreement.minimumTons) {
       throw new VolumeDiscountError(
         "agreement.maximumTons must be greater than or equal to agreement.minimumTons",
       );

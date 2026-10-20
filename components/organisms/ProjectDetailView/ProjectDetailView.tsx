@@ -16,7 +16,6 @@ import {
   Heart,
 } from 'lucide-react';
 
-import dynamic from 'next/dynamic';
 import { Button } from '@/components/atoms/Button';
 import { Text } from '@/components/atoms/Text';
 import { Badge } from '@/components/atoms/Badge';
@@ -47,7 +46,10 @@ import type { AdminProjectDetail } from '@/lib/types/adminProject';
 import type { CarbonProject } from '@/lib/types/carbon';
 
 const ProjectProtectionImpact = dynamic(
-  () => import('@/components/organisms/SponsorImpact/ProjectProtectionImpact').then((module) => module.ProjectProtectionImpact),
+  () =>
+    import('@/components/organisms/SponsorImpact/ProjectProtectionImpact').then(
+      (module) => module.ProjectProtectionImpact
+    ),
   { ssr: false }
 );
 

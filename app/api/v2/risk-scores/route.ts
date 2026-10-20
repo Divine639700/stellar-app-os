@@ -94,10 +94,7 @@ export function GET(request: Request): NextResponse {
   const url = new URL(request.url);
   const projectId = url.searchParams.get('projectId');
   const rating = url.searchParams.get('rating');
-  const limit = Math.min(
-    parseInt(url.searchParams.get('limit') || '20', 10) || 20,
-    100
-  );
+  const limit = Math.min(parseInt(url.searchParams.get('limit') || '20', 10) || 20, 100);
   const offset = parseInt(url.searchParams.get('offset') || '0', 10) || 0;
 
   if (projectId) {

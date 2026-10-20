@@ -2,7 +2,7 @@
 
 import type { JSX } from 'react';
 import type { BlockchainProofReceipt } from '@/lib/retirement/receipt';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/atoms/Card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/molecules/Card';
 import { Badge } from '@/components/atoms/Badge';
 import { Text } from '@/components/atoms/Text';
 

@@ -25,6 +25,9 @@ jobs:
       - name: Build
         continue-on-error: true
         run: pnpm build > build-diagnostics.log 2>&1
+      - name: Regression tests
+        continue-on-error: true
+        run: pnpm exec vitest run lib/__tests__/gdpr-merge.test.ts lib/__tests__/app-route-layout.test.ts lib/__tests__/proxy-merge.test.ts lib/__tests__/volume-discount-merge.test.ts lib/volunteers components/organisms/VolunteerCoordination --maxWorkers=2 --minWorkers=1 > regression-tests.log 2>&1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -33,3 +36,4 @@ jobs:
             mechanical-fixes.patch
             lint-diagnostics.json
             build-diagnostics.log
+            regression-tests.log

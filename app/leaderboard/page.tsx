@@ -649,7 +649,9 @@ function LeaderboardContent() {
                   </div>
 
                   <Button asChild stellar="primary" size="sm">
-                    <Link href={category === 'sponsors' ? '/credits/purchase' : '/planters/register'}>
+                    <Link
+                      href={category === 'sponsors' ? '/credits/purchase' : '/planters/register'}
+                    >
                       {category === 'sponsors' ? 'Increase Impact' : 'Register as Planter'}
                     </Link>
                   </Button>

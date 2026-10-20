@@ -20,7 +20,10 @@ describe('GDPR entry points after merge repair', () => {
     query.mockResolvedValue({ rowCount: 2 });
     const result = await deleteUserData('wallet-1');
     expect(result.deletedFrom).toEqual([
-      'trees(2)', 'progress_updates(2)', 'notifications(2)', 'newsletter_subscriptions(2)',
+      'trees(2)',
+      'progress_updates(2)',
+      'notifications(2)',
+      'newsletter_subscriptions(2)',
     ]);
     expect(query).toHaveBeenCalledTimes(4);
     for (const call of query.mock.calls) {

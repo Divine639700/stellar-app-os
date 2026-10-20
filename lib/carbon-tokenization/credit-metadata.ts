@@ -52,8 +52,7 @@ export function buildCreditMetadata(params: {
   const { project, retirement, validationId } = params;
   const tokenizedAt = params.tokenizedAt ?? new Date().toISOString();
   const vintage = retirement.vintage ?? project.vintage;
-  const displayProtocol =
-    project.protocol === 'verra' ? 'Verra (VCS)' : 'Gold Standard';
+  const displayProtocol = project.protocol === 'verra' ? 'Verra (VCS)' : 'Gold Standard';
   const vintageLabel = vintage ? String(vintage) : 'N/A';
   const name = `Verified Carbon Credit · ${displayProtocol} · Project ${project.projectId} · Vintage ${vintageLabel}`;
   const description =
@@ -153,11 +152,12 @@ export async function storeCreditMetadata(params: {
   storagePreference?: 'ipfs' | 'local';
 }): Promise<MetadataUploadResult> {
   const { metadata, tokenId, requestOrigin, storagePreference } = params;
-  const preferIpfs = storagePreference === 'ipfs'
-    ? true
-    : storagePreference === 'local'
-      ? false
-      : Boolean(process.env.PINATA_JWT || process.env.PINATA_API_KEY);
+  const preferIpfs =
+    storagePreference === 'ipfs'
+      ? true
+      : storagePreference === 'local'
+        ? false
+        : Boolean(process.env.PINATA_JWT || process.env.PINATA_API_KEY);
 
   const jsonBuffer = Buffer.from(JSON.stringify(metadata, null, 2), 'utf8');
 
@@ -184,8 +184,7 @@ export async function storeCreditMetadata(params: {
   }
 
   const metaDir =
-    process.env.CREDIT_METADATA_DIR ||
-    path.join(process.cwd(), 'public', 'credit-metadata');
+    process.env.CREDIT_METADATA_DIR || path.join(process.cwd(), 'public', 'credit-metadata');
   if (!fs.existsSync(metaDir)) {
     fs.mkdirSync(metaDir, { recursive: true });
   }
@@ -200,10 +199,7 @@ export async function storeCreditMetadata(params: {
   };
 }
 
-export function deriveEvmTokenId(
-  protocol: RegistryProtocol,
-  serialNumber: string
-): bigint {
+export function deriveEvmTokenId(protocol: RegistryProtocol, serialNumber: string): bigint {
   const hex = makeTokenId(protocol, serialNumber);
   return BigInt(`0x${hex.slice(0, 64)}`);
 }

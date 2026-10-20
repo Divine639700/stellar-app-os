@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { ReviewCard } from '@/app/components/reviews/ReviewCard';
 import { TeamReviewSummary } from '@/app/components/reviews/TeamReviewSummary';
-import { Review, ReviewSummary } from '@/lib/types/review';
+import { type Review, type ReviewSummary } from '@/lib/types/review';
 import { CarbonOffsetCalculator } from '@/components/organisms/CarbonOffsetCalculator/CarbonOffsetCalculator';
 import { ProjectComparisonTool } from '@/components/ProjectComparisonTool';
 
@@ -15,14 +15,12 @@ export default function PlanterReviewsPage() {
   const [summary, setSummary] = useState<ReviewSummary | null>(null);
   const [loading, setLoading] = useState(true);
 
-
-
   const fetchReviews = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/reviews?planterId=${planterId}`);
       if (!response.ok) throw new Error('Failed to fetch reviews');
-      
+
       const data = await response.json();
       setReviews(data.reviews);
       setSummary(data.summary);
@@ -59,9 +57,7 @@ export default function PlanterReviewsPage() {
         {reviews.length === 0 ? (
           <p className="text-center text-gray-500 py-8">No reviews yet.</p>
         ) : (
-          reviews.map((review) => (
-            <ReviewCard key={review.id} review={review} />
-          ))
+          reviews.map((review) => <ReviewCard key={review.id} review={review} />)
         )}
       </div>
     </div>
