@@ -1,15 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { ReviewForm } from '@/app/components/reviews/ReviewForm';
 import { ReviewCard } from '@/app/components/reviews/ReviewCard';
 import { TeamReviewSummary } from '@/app/components/reviews/TeamReviewSummary';
 import { Review, ReviewSummary } from '@/lib/types/review';
-import { CarbonOffsetCalculator } from '@/app/components/carbon/CarbonOffsetCalculator';
-import { OffsetProjectSearch } from '@/app/components/carbon/OffsetProjectSearch';
-import { ProjectComparisonTool } from '@/app/components/carbon/ProjectComparisonTool';
-import { OffsetProjectFilters } from '@/lib/types/offsetProject';
+import { CarbonOffsetCalculator } from '@/components/organisms/CarbonOffsetCalculator/CarbonOffsetCalculator';
+import { ProjectComparisonTool } from '@/components/ProjectComparisonTool';
 
 interface OwnershipRecord {
   id: string;
@@ -33,7 +31,6 @@ export default function SponsorReviewsPage() {
   const [showCalculator, setShowCalculator] = useState(false);
   const [showProjectSearch, setShowProjectSearch] = useState(false);
   const [showComparison, setShowComparison] = useState(false);
-  const [projectFilters, setProjectFilters] = useState<OffsetProjectFilters>({});
   const [ownershipHistory, setOwnershipHistory] = useState<OwnershipRecord[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [historyError, setHistoryError] = useState<string | null>(null);
@@ -43,11 +40,8 @@ export default function SponsorReviewsPage() {
   const [transferring, setTransferring] = useState(false);
   const [transferError, setTransferError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchReviews();
-  }, [sponsorId]);
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/reviews?sponsorId=${sponsorId}`);
@@ -61,7 +55,11 @@ export default function SponsorReviewsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [sponsorId]);
+
+  useEffect(() => {
+    void fetchReviews();
+  }, [fetchReviews]);
 
   const fetchOwnershipHistory = async () => {
     try {
@@ -292,10 +290,7 @@ export default function SponsorReviewsPage() {
       {showComparison && <ProjectComparisonTool />}
 
       {showProjectSearch && (
-        <OffsetProjectSearch
-          filters={projectFilters}
-          onFiltersChange={setProjectFilters}
-        />
+        <ProjectComparisonTool />
       )}
 
       {showCalculator && <CarbonOffsetCalculator />}

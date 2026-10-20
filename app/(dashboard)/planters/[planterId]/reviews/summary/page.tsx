@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { ReviewCard } from '@/app/components/reviews/ReviewCard';
 import { TeamReviewSummary } from '@/app/components/reviews/TeamReviewSummary';
 import { Review, ReviewSummary } from '@/lib/types/review';
-import { CarbonOffsetCalculator } from '@/app/components/carbon/CarbonOffsetCalculator';
-import { ProjectComparison } from '@/app/components/reviews/ProjectComparison';
-import { ProjectComparisonItem } from '@/lib/types/projectComparison';
+import { CarbonOffsetCalculator } from '@/components/organisms/CarbonOffsetCalculator/CarbonOffsetCalculator';
+import { ProjectComparisonTool } from '@/components/ProjectComparisonTool';
 
 export default function PlanterReviewsPage() {
   const params = useParams();
@@ -15,19 +14,10 @@ export default function PlanterReviewsPage() {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [summary, setSummary] = useState<ReviewSummary | null>(null);
   const [loading, setLoading] = useState(true);
-  const [comparisonItems, setComparisonItems] = useState<ProjectComparisonItem[]>([]);
-  const [comparisonLoading, setComparisonLoading] = useState(true);
-  const [comparisonError, setComparisonError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchReviews();
-  }, [planterId]);
 
-  useEffect(() => {
-    fetchComparison();
-  }, [planterId]);
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/reviews?planterId=${planterId}`);
@@ -41,24 +31,11 @@ export default function PlanterReviewsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [planterId]);
 
-  const fetchComparison = async () => {
-    try {
-      setComparisonLoading(true);
-      setComparisonError(null);
-      const response = await fetch(`/api/projects/compare?planterId=${planterId}`);
-      if (!response.ok) throw new Error('Failed to fetch comparison data');
-
-      const data = await response.json();
-      setComparisonItems(data.projects ?? []);
-    } catch (error) {
-      console.error('Error fetching comparison data:', error);
-      setComparisonError('Unable to load project comparison data.');
-    } finally {
-      setComparisonLoading(false);
-    }
-  };
+  useEffect(() => {
+    void fetchReviews();
+  }, [fetchReviews]);
 
   if (loading) {
     return (
@@ -76,11 +53,7 @@ export default function PlanterReviewsPage() {
 
       <CarbonOffsetCalculator />
 
-      <ProjectComparison
-        items={comparisonItems}
-        loading={comparisonLoading}
-        error={comparisonError}
-      />
+      <ProjectComparisonTool />
 
       <div className="space-y-4">
         {reviews.length === 0 ? (

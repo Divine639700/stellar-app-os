@@ -99,9 +99,9 @@ export interface EcosystemRecoverySnapshot {
 
 // ── API request / response shapes ────────────────────────────────────────────
 
-export interface SubmitBioacousticRequest extends BioacousticReading {}
+export type SubmitBioacousticRequest = BioacousticReading;
 
-export interface SubmitDroneObservationRequest extends DroneObservation {}
+export type SubmitDroneObservationRequest = DroneObservation;
 
 export interface GetEcosystemSnapshotRequest {
   regionKey: string;

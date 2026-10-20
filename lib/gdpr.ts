@@ -58,6 +58,8 @@ export async function deleteUserData(userId: string): Promise<{ deletedFrom: str
   }
 
   return { deletedFrom };
+}
+
 export interface ExportedUserData {
   profile: { walletAddress: string };
   trees: unknown[];

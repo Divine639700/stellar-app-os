@@ -1,0 +1,31 @@
+name: Issue 1662 validation
+on:
+  push:
+    branches: [validation/1662-checks]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Lint diagnostics
+        continue-on-error: true
+        run: pnpm exec eslint . --format json --output-file lint-diagnostics.json
+      - name: Build
+        continue-on-error: true
+        run: pnpm build > build-diagnostics.log 2>&1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: diagnostics
+          path: |
+            lint-diagnostics.json
+            build-diagnostics.log

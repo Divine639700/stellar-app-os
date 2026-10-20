@@ -130,7 +130,7 @@ export function validateBulkPurchaseAgreement(agreement: BulkPurchaseAgreement):
 }
 
 export function findApplicableTier(tiers: VolumeTier[], tons: number): VolumeTier | null {
-  if (!Array.isArray(tiers) || tiers.length == 0) {
+  if (!Array.isArray(tiers) || tiers.length === 0) {
     return null;
   }
 

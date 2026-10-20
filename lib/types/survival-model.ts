@@ -115,7 +115,7 @@ export interface SurvivalPredictionResult {
 
 // ── API shapes ────────────────────────────────────────────────────────────────
 
-export interface SurvivalPredictRequest extends SurvivalPredictionInput {}
+export type SurvivalPredictRequest = SurvivalPredictionInput;
 
 export interface SurvivalPredictResponse extends SurvivalPredictionResult {
   speciesSlug: string;

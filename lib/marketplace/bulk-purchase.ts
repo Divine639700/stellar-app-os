@@ -190,9 +190,9 @@ export function parseBulkPurchaseFilters(params: URLSearchParams): BulkPurchaseF
 }
 
 export async function createBulkPurchaseAgreement(
-  pool: returnType<typeof getPool>,
+  pool: ReturnType<typeof getPool>,
   input: BulkPurchaseInput
-{): Promise<BulkPurchaseAgreement> {
+): Promise<BulkPurchaseAgreement> {
   const discount: VolumeDiscountResolved = await resolveVolumeDiscount(pool, {
     tons: input.tons,
     unit_price: input.unit_price,
@@ -241,9 +241,9 @@ export async function createBulkPurchaseAgreement(
 }
 
 export async function getBulkPurchaseAgreement(
-  pool: returnType<typeof getPool>,
+  pool: ReturnType<typeof getPool>,
   id: string
-{): Promise<BulkPurchaseAgreement | null> {
+): Promise<BulkPurchaseAgreement | null> {
   const result = await pool.query(
     `SELECT * FROM bulk_purchase_agreements WHERE id = $1`,
     [id]
@@ -253,9 +253,9 @@ export async function getBulkPurchaseAgreement(
 }
 
 export async function listBulkPurchaseAgreements(
-  pool: returnType<typeof getPool>,
+  pool: ReturnType<typeof getPool>,
   filters: BulkPurchaseFilters
-{): Promise<BulkPurchaseAgreement[]> {
+): Promise<BulkPurchaseAgreement[]> {
   const clauses: string[] = [];
   const values: unknown[] = [];
   if (filters.buyer_id) {
@@ -288,10 +288,10 @@ export async function listBulkPurchaseAgreements(
 }
 
 export async function activateBulkPurchaseAgreement(
-  pool: returnType<typeof getPool>,
+  pool: ReturnType<typeof getPool>,
   id: string,
   actor?: string
-{): Promise<BulkPurchaseAgreement> {
+): Promise<BulkPurchaseAgreement> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -326,11 +326,11 @@ export async function activateBulkPurchaseAgreement(
 }
 
 export async function cancelBulkPurchaseAgreement(
-  pool: returnType<typeof getPool>,
+  pool: ReturnType<typeof getPool>,
   id: string,
   actor?: string,
   reason?: string
-{): Promise<BulkPurchaseAgreement> {
+): Promise<BulkPurchaseAgreement> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -365,10 +365,10 @@ export async function cancelBulkPurchaseAgreement(
 }
 
 export async function fulfillBulkPurchaseAgreement(
-  pool: returnType<typeof getPool>,
+  pool: ReturnType<typeof getPool>,
   id: string,
   actor?: string
-{): Promise<BulkPurchaseAgreement> {
+): Promise<BulkPurchaseAgreement> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');

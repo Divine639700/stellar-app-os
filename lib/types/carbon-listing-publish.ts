@@ -99,7 +99,7 @@ export const publishListingSchema = z.object({
 export type PublishListingFormData = z.infer<typeof publishListingSchema>;
 
 /** Alias kept for backward compatibility with the API route and service layer */
-export interface PublishListingRequest extends PublishListingFormData {}
+export type PublishListingRequest = PublishListingFormData;
 
 export interface PublishedListing {
   id: string;
